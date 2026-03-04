@@ -1,4 +1,5 @@
 import { FileCode, Tag, Cpu, Send } from "lucide-react";
+import { Button, Card, Input, Label, Select, SelectItem, Textarea } from "@geenius-ui/react-css";
 import "./PublishPage.css";
 
 export default function PublishPage() {
@@ -13,72 +14,72 @@ export default function PublishPage() {
 
             <div className="publish-content">
                 <form className="publish-form" onSubmit={(e) => e.preventDefault()}>
-                    <section className="publish-section card">
+                    <Card padding="lg" className="publish-section">
                         <h2><FileCode size={20} /> Template Details</h2>
                         <div className="field-group">
-                            <label>Template Name</label>
-                            <input type="text" className="input" placeholder="e.g. SEO Writer, Bug Fixer, PR Reviewer..." />
+                            <Label>Template Name</Label>
+                            <Input type="text" placeholder="e.g. SEO Writer, Bug Fixer, PR Reviewer..." />
                         </div>
                         <div className="field-group">
-                            <label>Description</label>
-                            <input type="text" className="input" placeholder="A brief description of what this agent does" />
+                            <Label>Description</Label>
+                            <Input type="text" placeholder="A brief description of what this agent does" />
                         </div>
                         <div className="field-group">
-                            <label>Long Description (Markdown)</label>
-                            <textarea className="input publish-textarea" placeholder="# My Agent&#10;&#10;Detailed description with examples, use cases, and configuration tips..." rows={8} />
+                            <Label>Long Description (Markdown)</Label>
+                            <Textarea className="publish-textarea" placeholder={"# My Agent\n\nDetailed description with examples, use cases, and configuration tips..."} rows={8} />
                         </div>
-                    </section>
+                    </Card>
 
-                    <section className="publish-section card">
+                    <Card padding="lg" className="publish-section">
                         <h2><Tag size={20} /> Classification</h2>
                         <div className="publish-row">
                             <div className="field-group">
-                                <label>Category</label>
-                                <select className="input">
-                                    <option>Orchestrator</option>
-                                    <option>Specialist</option>
-                                    <option>Utility</option>
-                                    <option>Workflow</option>
-                                    <option>Integration</option>
-                                </select>
+                                <Label>Category</Label>
+                                <Select defaultValue="Orchestrator">
+                                    <SelectItem value="Orchestrator">Orchestrator</SelectItem>
+                                    <SelectItem value="Specialist">Specialist</SelectItem>
+                                    <SelectItem value="Utility">Utility</SelectItem>
+                                    <SelectItem value="Workflow">Workflow</SelectItem>
+                                    <SelectItem value="Integration">Integration</SelectItem>
+                                </Select>
                             </div>
                             <div className="field-group">
-                                <label>Icon (Emoji)</label>
-                                <input type="text" className="input" placeholder="🤖" />
+                                <Label>Icon (Emoji)</Label>
+                                <Input type="text" placeholder="🤖" />
                             </div>
                             <div className="field-group">
-                                <label>Color</label>
-                                <input type="color" className="input publish-color" defaultValue="#FF6B6B" />
+                                <Label>Color</Label>
+                                <Input type="color" className="publish-color" defaultValue="#FF6B6B" />
                             </div>
                         </div>
                         <div className="field-group">
-                            <label>Tags (comma-separated)</label>
-                            <input type="text" className="input" placeholder="coding, review, debugging, typescript" />
+                            <Label>Tags (comma-separated)</Label>
+                            <Input type="text" placeholder="coding, review, debugging, typescript" />
                         </div>
-                    </section>
+                    </Card>
 
-                    <section className="publish-section card">
+                    <Card padding="lg" className="publish-section">
                         <h2><Cpu size={20} /> Agent Configuration</h2>
                         <div className="field-group">
-                            <label>System Prompt</label>
-                            <textarea className="input publish-textarea" placeholder="You are a helpful assistant that..." rows={6} />
+                            <Label>System Prompt</Label>
+                            <Textarea className="publish-textarea" placeholder="You are a helpful assistant that..." rows={6} />
                         </div>
                         <div className="field-group">
-                            <label>Default Model</label>
-                            <select className="input">
-                                <option>gpt-4o</option>
-                                <option>gpt-4o-mini</option>
-                                <option>claude-3.5-sonnet</option>
-                                <option>claude-3-haiku</option>
-                                <option>gemini-pro</option>
-                            </select>
+                            <Label>Default Model</Label>
+                            <Select defaultValue="gpt-4o">
+                                <SelectItem value="gpt-4o">gpt-4o</SelectItem>
+                                <SelectItem value="gpt-4o-mini">gpt-4o-mini</SelectItem>
+                                <SelectItem value="claude-3.5-sonnet">claude-3.5-sonnet</SelectItem>
+                                <SelectItem value="claude-3-haiku">claude-3-haiku</SelectItem>
+                                <SelectItem value="gemini-pro">gemini-pro</SelectItem>
+                            </Select>
                         </div>
-                    </section>
+                    </Card>
 
                     <div className="publish-actions">
-                        <button type="submit" className="btn btn-primary btn-lg">
-                            <Send size={16} /> Publish Template
-                        </button>
+                        <Button variant="primary" size="lg" type="submit" icon={<Send size={16} />}>
+                            Publish Template
+                        </Button>
                     </div>
                 </form>
             </div>

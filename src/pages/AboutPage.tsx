@@ -1,4 +1,5 @@
 import { Store, Github, Heart, Coffee } from "lucide-react";
+import { Button, Badge } from "@geenius-ui/react-css";
 import "./AboutPage.css";
 
 export default function AboutPage() {
@@ -28,18 +29,18 @@ export default function AboutPage() {
                         instance at $9/month.
                     </p>
                     <div className="about-tech">
-                        <span className="badge badge-neutral">React</span>
-                        <span className="badge badge-neutral">TypeScript</span>
-                        <span className="badge badge-neutral">Convex</span>
-                        <span className="badge badge-neutral">Vite</span>
+                        <Badge variant="secondary">React</Badge>
+                        <Badge variant="secondary">TypeScript</Badge>
+                        <Badge variant="secondary">Convex</Badge>
+                        <Badge variant="secondary">Vite</Badge>
                     </div>
                 </section>
                 <section className="about-links">
-                    <a href="https://github.com/mxn2020/claw-marketplace" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">
-                        <Github size={18} /> Star on GitHub
+                    <a href="https://github.com/mxn2020/claw-marketplace" target="_blank" rel="noopener noreferrer">
+                        <Button variant="secondary" size="lg" icon={<Github size={18} />}>Star on GitHub</Button>
                     </a>
-                    <a href="https://buymeacoffee.com/mxn2020" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">
-                        <Coffee size={18} /> Buy Me a Coffee
+                    <a href="https://buymeacoffee.com/mxn2020" target="_blank" rel="noopener noreferrer">
+                        <Button variant="secondary" size="lg" icon={<Coffee size={18} />}>Buy Me a Coffee</Button>
                     </a>
                 </section>
             </div>

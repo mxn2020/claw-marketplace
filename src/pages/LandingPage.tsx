@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Download, Star, Sparkles, Search, TrendingUp } from "lucide-react";
+import { Button, Card, Badge, Input } from "@geenius-ui/react-css";
 import "./LandingPage.css";
 
 const featuredTemplates = [
@@ -27,7 +28,6 @@ const stats = [
 export default function LandingPage() {
     return (
         <div className="mp-landing">
-            {/* Hero */}
             <section className="mp-hero">
                 <div className="mp-hero-bg">
                     <div className="mp-hero-blob mp-blob-1" />
@@ -49,10 +49,9 @@ export default function LandingPage() {
                     </p>
                     <div className="mp-hero-search animate-fade-in-up delay-3">
                         <Search size={20} />
-                        <input
+                        <Input
                             type="text"
                             placeholder="Search templates... (e.g. code, research, writer)"
-                            className="input"
                             readOnly
                             onClick={() => window.location.href = "/browse"}
                         />
@@ -68,7 +67,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Featured */}
             <section className="mp-section">
                 <div className="mp-section-inner">
                     <div className="mp-section-header">
@@ -76,32 +74,33 @@ export default function LandingPage() {
                             <h2><TrendingUp size={22} /> Trending Templates</h2>
                             <p>Most popular templates this week</p>
                         </div>
-                        <Link to="/browse" className="btn btn-secondary btn-sm">
-                            View All <ArrowRight size={14} />
+                        <Link to="/browse">
+                            <Button variant="secondary" size="sm">View All <ArrowRight size={14} /></Button>
                         </Link>
                     </div>
                     <div className="mp-featured-grid">
                         {featuredTemplates.map((t) => (
-                            <Link to={`/browse`} key={t.name} className="mp-template-card card">
-                                <div className="mp-tc-header">
-                                    <div className="mp-tc-icon" style={{ background: `${t.color}15` }}>
-                                        <span>{t.icon}</span>
+                            <Link to={`/browse`} key={t.name} className="mp-template-card-link">
+                                <Card hover padding="md" className="mp-template-card">
+                                    <div className="mp-tc-header">
+                                        <div className="mp-tc-icon" style={{ background: `${t.color}15` }}>
+                                            <span>{t.icon}</span>
+                                        </div>
+                                        <Badge variant="info">{t.category}</Badge>
                                     </div>
-                                    <span className="badge badge-accent">{t.category}</span>
-                                </div>
-                                <h3>{t.name}</h3>
-                                <p>{t.desc}</p>
-                                <div className="mp-tc-stats">
-                                    <span><Download size={13} /> {t.downloads}</span>
-                                    <span><Star size={13} /> {t.stars}</span>
-                                </div>
+                                    <h3>{t.name}</h3>
+                                    <p>{t.desc}</p>
+                                    <div className="mp-tc-stats">
+                                        <span><Download size={13} /> {t.downloads}</span>
+                                        <span><Star size={13} /> {t.stars}</span>
+                                    </div>
+                                </Card>
                             </Link>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Categories */}
             <section className="mp-section mp-section-alt">
                 <div className="mp-section-inner">
                     <div className="mp-section-header">
@@ -112,26 +111,27 @@ export default function LandingPage() {
                     </div>
                     <div className="mp-categories-grid">
                         {categories.map((c) => (
-                            <Link to="/categories" key={c.name} className="mp-category-card card">
-                                <span className="mp-category-icon">{c.icon}</span>
-                                <h3>{c.name}</h3>
-                                <span className="mp-category-count">{c.count} templates</span>
+                            <Link to="/categories" key={c.name} className="mp-category-card-link">
+                                <Card hover padding="md" className="mp-category-card">
+                                    <span className="mp-category-icon">{c.icon}</span>
+                                    <h3>{c.name}</h3>
+                                    <span className="mp-category-count">{c.count} templates</span>
+                                </Card>
                             </Link>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
             <section className="mp-section">
                 <div className="mp-section-inner">
-                    <div className="mp-cta card">
+                    <Card padding="lg" className="mp-cta">
                         <h2>Ready to publish?</h2>
                         <p>Share your custom agent templates with the community. Free and open source.</p>
-                        <Link to="/publish" className="btn btn-primary btn-lg">
-                            Publish a Template <ArrowRight size={16} />
+                        <Link to="/publish">
+                            <Button variant="primary" size="lg">Publish a Template <ArrowRight size={16} /></Button>
                         </Link>
-                    </div>
+                    </Card>
                 </div>
             </section>
         </div>

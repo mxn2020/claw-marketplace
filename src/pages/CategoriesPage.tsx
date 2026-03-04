@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { Card, Badge } from "@geenius-ui/react-css";
 import "./CategoriesPage.css";
 
 const categories = [
@@ -59,26 +60,28 @@ export default function CategoriesPage() {
             </div>
             <div className="cat-content">
                 {categories.map((c) => (
-                    <Link to="/browse" key={c.slug} className="cat-card card">
-                        <div className="cat-card-left">
-                            <div className="cat-card-icon" style={{ background: `${c.color}15`, color: c.color }}>
-                                <span>{c.icon}</span>
-                            </div>
-                            <div className="cat-card-info">
-                                <h2>{c.name}</h2>
-                                <p>{c.desc}</p>
-                                <div className="cat-card-examples">
-                                    {c.examples.map((ex) => (
-                                        <span key={ex} className="badge badge-neutral">{ex}</span>
-                                    ))}
+                    <Link to="/browse" key={c.slug} className="cat-card-link">
+                        <Card hover padding="md" className="cat-card">
+                            <div className="cat-card-left">
+                                <div className="cat-card-icon" style={{ background: `${c.color}15`, color: c.color }}>
+                                    <span>{c.icon}</span>
+                                </div>
+                                <div className="cat-card-info">
+                                    <h2>{c.name}</h2>
+                                    <p>{c.desc}</p>
+                                    <div className="cat-card-examples">
+                                        {c.examples.map((ex) => (
+                                            <Badge key={ex} variant="secondary">{ex}</Badge>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="cat-card-right">
-                            <span className="cat-card-count">{c.count}</span>
-                            <span className="cat-card-count-label">templates</span>
-                            <ArrowRight size={16} />
-                        </div>
+                            <div className="cat-card-right">
+                                <span className="cat-card-count">{c.count}</span>
+                                <span className="cat-card-count-label">templates</span>
+                                <ArrowRight size={16} />
+                            </div>
+                        </Card>
                     </Link>
                 ))}
             </div>

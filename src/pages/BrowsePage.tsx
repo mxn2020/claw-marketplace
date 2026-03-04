@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Search, Filter, Download, Star, ArrowUpDown } from "lucide-react";
+import { Button, Card, Badge, Input, Select, SelectItem } from "@geenius-ui/react-css";
 import "./BrowsePage.css";
 
 const allTemplates = [
@@ -44,53 +45,51 @@ export default function BrowsePage() {
             </div>
 
             <div className="browse-content">
-                {/* Toolbar */}
                 <div className="browse-toolbar">
                     <div className="browse-search">
                         <Search size={16} />
-                        <input
+                        <Input
                             type="text"
-                            className="input"
                             placeholder="Search templates..."
                             value={search}
-                            onChange={(e) => setSearch(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
                         />
                     </div>
                     <div className="browse-filters">
                         <Filter size={14} />
                         {["all", "orchestrator", "specialist", "utility", "workflow", "integration"].map((c) => (
-                            <button
+                            <Button
                                 key={c}
-                                className={`btn btn-sm ${category === c ? "btn-primary" : "btn-ghost"}`}
+                                size="sm"
+                                variant={category === c ? "primary" : "ghost"}
                                 onClick={() => setCategory(c)}
                             >
                                 {c.charAt(0).toUpperCase() + c.slice(1)}
-                            </button>
+                            </Button>
                         ))}
                     </div>
                     <div className="browse-sort">
                         <ArrowUpDown size={14} />
-                        <select className="input" value={sort} onChange={(e) => setSort(e.target.value as SortBy)}>
-                            <option value="downloads">Most Downloaded</option>
-                            <option value="stars">Most Starred</option>
-                            <option value="name">A → Z</option>
-                        </select>
+                        <Select value={sort} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSort(e.target.value as SortBy)}>
+                            <SelectItem value="downloads">Most Downloaded</SelectItem>
+                            <SelectItem value="stars">Most Starred</SelectItem>
+                            <SelectItem value="name">A → Z</SelectItem>
+                        </Select>
                     </div>
                 </div>
 
                 <p className="browse-count">{filtered.length} templates found</p>
 
-                {/* Grid */}
                 <div className="browse-grid">
                     {filtered.map((t) => (
-                        <div key={t.slug} className="browse-card card">
+                        <Card key={t.slug} hover padding="md" className="browse-card">
                             <div className="browse-card-top">
                                 <div className="browse-card-icon" style={{ background: `${t.color}15` }}>
                                     <span>{t.icon}</span>
                                 </div>
                                 <div className="browse-card-meta">
-                                    <span className="badge badge-accent">{t.category}</span>
-                                    {t.verified && <span className="badge badge-success">✓ Verified</span>}
+                                    <Badge variant="info">{t.category}</Badge>
+                                    {t.verified && <Badge variant="success">✓ Verified</Badge>}
                                 </div>
                             </div>
                             <h3>{t.name}</h3>
@@ -101,9 +100,9 @@ export default function BrowsePage() {
                                     <span><Download size={13} /> {t.downloads.toLocaleString()}</span>
                                     <span><Star size={13} /> {t.stars}</span>
                                 </div>
-                                <button className="btn btn-primary btn-sm">Install</button>
+                                <Button variant="primary" size="sm">Install</Button>
                             </div>
-                        </div>
+                        </Card>
                     ))}
                 </div>
             </div>
