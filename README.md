@@ -3,7 +3,7 @@
 > 🏪 The open-source marketplace for AI agent templates.
 
 [![CI](https://github.com/mxn2020/claw-marketplace/actions/workflows/ci.yml/badge.svg)](https://github.com/mxn2020/claw-marketplace/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 
 Browse, install, and share AI agent templates for your OpenClaw instance.
 
@@ -57,13 +57,17 @@ claw-marketplace/
 │   ├── index.css        # Design system
 │   └── App.tsx          # Router
 ├── .github/workflows/   # CI + Release
-└── LICENSE              # MIT
+└── LICENSE              # Apache-2.0
 ```
 
 ## 📄 License
 
-MIT © [Mehdi Nabhani](https://github.com/mxn2020)
+Apache-2.0 © [AVS Media](https://github.com/mxn2020)
 
 ---
 
 **[⭐ Star on GitHub](https://github.com/mxn2020/claw-marketplace)** · **[☕ Buy Me a Coffee](https://buymeacoffee.com/mxn2020)**
+
+---
+
+> **License note:** As of 2026-10-23 this project is licensed under the Apache License 2.0 (previously MIT). Versions released before this change remain available under MIT to those who received them.
